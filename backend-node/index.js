@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const connectDB = require("./config/db");
-const resourceRouter = require("./routes/resource"); // 경로 수정: resource -> routes/resource
+const resourceRouter = require("routes/resource"); // 경로 수정: resource -> routes/resource
 
 // MongoDB 연결
 connectDB();

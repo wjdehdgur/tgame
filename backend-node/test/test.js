@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const Resource = require("../models/Resource"); // 경로 맞는지 확인
+const Resource = require("./models/resource"); // 경로 맞는지 확인
 
 async function connectDB() {
   try {

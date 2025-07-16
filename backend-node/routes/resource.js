@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const Resource = require("../models/resource");
+const Resource = require("./models/resource");
 
 // 모든 자원 조회
 router.get("/", async (req, res) => {

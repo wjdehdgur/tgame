@@ -1,0 +1,15 @@
+{
+  "folders": [
+    {
+      "path": "."
+    }
+  ],
+  "settings": {
+    "java.project.sourcePaths": ["src/main/java"],
+    "java.configuration.updateBuildConfiguration": "automatic",
+    "eslint.enable": true,
+    "editor.tabSize": 2,
+    "editor.formatOnSave": true,
+    "java.compile.nullAnalysis.mode": "automatic"
+  }
+}

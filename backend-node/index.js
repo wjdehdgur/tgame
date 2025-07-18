@@ -1,24 +1,18 @@
+// 📄 backend-node/index.js
+
 const express = require("express");
 const app = express();
-const connectDB = require("./config/db");
-const resourceRouter = require("routes/resource"); // 경로 수정: resource -> routes/resource
+const connectDB = require("./config/db"); // ✅ MongoDB 연결 함수 불러오기
 
-// MongoDB 연결
+const resourceRoutes = require("./routes/resource.route");
+
+// ✅ MongoDB 연결 실행 (서버 실행 전에 DB 연결 시도)
 connectDB();
 
-// JSON 바디 파싱 미들웨어
 app.use(express.json());
+app.use("/api/resources", resourceRoutes);
 
-// API 라우터 연결
-app.use("/api/resources", resourceRouter);
+// 에러 핸들러
+app.use(require("./middlewares/errorHandler.js"));
 
-// 테스트 라우트 (서버 작동 확인용)
-app.get("/test", (req, res) => {
-  res.send("Test route is working");
-});
-
-// 서버 실행
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`서버 실행 중: http://localhost:${PORT}`);
-});
+app.listen(3000, () => console.log("✅ Server running on port 3000"));

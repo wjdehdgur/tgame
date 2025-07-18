@@ -1,3 +1,5 @@
+// 📁 backend-node/config/db.js
+
 const mongoose = require("mongoose");
 
 async function connectDB() {
@@ -6,9 +8,9 @@ async function connectDB() {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
-    console.log("MongoDB connected");
+    console.log("✅ MongoDB 연결 성공");
   } catch (err) {
-    console.error("MongoDB 연결 실패:", err);
+    console.error("❌ MongoDB 연결 실패:", err);
   }
 }
 

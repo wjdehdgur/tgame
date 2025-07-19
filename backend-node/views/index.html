@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TGame - 자원 관리 시스템</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🏭 TGame 자원 관리 시스템</h1>
+            <p>자원을 관리하고 생산/소비를 체험해보세요!</p>
+        </header>
+
+        <main>
+            <!-- 자원 목록 섹션 -->
+            <section class="resources-section">
+                <h2>📦 자원 현황</h2>
+                <div id="resources-list" class="resources-grid">
+                    <!-- 자원들이 여기에 동적으로 로드됩니다 -->
+                </div>
+            </section>
+
+            <!-- 자원 조작 섹션 -->
+            <section class="controls-section">
+                <h2>⚙️ 자원 조작</h2>
+                
+                <!-- 자원 생산 -->
+                <div class="control-group">
+                    <h3>🔄 자원 생산</h3>
+                    <div class="input-group">
+                        <select id="produce-resource" class="form-control">
+                            <option value="">자원 선택</option>
+                        </select>
+                        <input type="number" id="produce-amount" class="form-control" placeholder="생산량" min="1" value="10">
+                        <button onclick="produceResource()" class="btn btn-primary">생산</button>
+                    </div>
+                </div>
+
+                <!-- 자원 소비 -->
+                <div class="control-group">
+                    <h3>💸 자원 소비</h3>
+                    <div class="input-group">
+                        <select id="use-resource" class="form-control">
+                            <option value="">자원 선택</option>
+                        </select>
+                        <input type="number" id="use-amount" class="form-control" placeholder="소비량" min="1" value="5">
+                        <button onclick="useResource()" class="btn btn-danger">소비</button>
+                    </div>
+                </div>
+
+                <!-- 저장량 조정 -->
+                <div class="control-group">
+                    <h3>📈 저장량 조정</h3>
+                    <div class="input-group">
+                        <select id="capacity-resource" class="form-control">
+                            <option value="">자원 선택</option>
+                        </select>
+                        <input type="number" id="capacity-amount" class="form-control" placeholder="조정량" value="50">
+                        <button onclick="increaseCapacity()" class="btn btn-success">증가</button>
+                        <button onclick="decreaseCapacity()" class="btn btn-warning">감소</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 로그 섹션 -->
+            <section class="log-section">
+                <h2>📝 작업 로그</h2>
+                <div id="log-container" class="log-container">
+                    <p class="log-entry">시스템이 시작되었습니다. 자원을 관리해보세요!</p>
+                </div>
+                <button onclick="clearLog()" class="btn btn-secondary">로그 지우기</button>
+            </section>
+        </main>
+    </div>
+
+    <script src="/script.js"></script>
+</body>
+</html>

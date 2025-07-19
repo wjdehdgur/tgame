@@ -5,6 +5,32 @@ const { throwIf } = require("../utils/logicUtils");
 const messages = require("../constants/messages");
 
 /**
+ * 자원 초기화 - 서버 시작 시 기본 자원 데이터 삽입
+ */
+exports.initializeResources = async () => {
+  try {
+    const count = await repo.count();
+    if (count === 0) {
+      const initialResources = [
+        { type: "MR", name: "광물", amount: 500, maxStorage: 1000 },
+        { type: "ER", name: "에너지", amount: 300, maxStorage: 800 },
+        { type: "SR", name: "창의성", amount: 50, maxStorage: 200 },
+        { type: "AR", name: "합성물", amount: 100, maxStorage: 500 },
+        { type: "PR", name: "고급자원", amount: 10, maxStorage: 50 },
+        { type: "FR", name: "식량", amount: 200, maxStorage: 600 }, // 체크리스트 요구사항 추가
+      ];
+      
+      await repo.insertMany(initialResources);
+      console.log("✅ 초기 자원 데이터 삽입 완료");
+    } else {
+      console.log("ℹ️ 자원 데이터가 이미 존재합니다.");
+    }
+  } catch (error) {
+    console.error("❌ 자원 초기화 실패:", error);
+  }
+};
+
+/**
  * 자원의 저장 용량 조정 (증가/감소 공통 처리)
  */
 exports.adjustCapacity = async (name, amount) => {
